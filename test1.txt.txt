@@ -1,0 +1,51 @@
+import numpy as np
+
+def matrix_operations():
+    # 输入矩阵
+    print("请输入矩阵 A 的元素（用空格分隔每行，用回车分隔行）：")
+    A = []
+    while True:
+        row = input()
+        if row.strip() == "":
+            break
+        A.append(list(map(float, row.split())))
+
+    print("请输入矩阵 B 的元素（用空格分隔每行，用回车分隔行）：")
+    B = []
+    while True:
+        row = input()
+        if row.strip() == "":
+            break
+        B.append(list(map(float, row.split())))
+
+    # 转为 NumPy 数组
+    A = np.array(A)
+    B = np.array(B)
+
+    # 检查形状
+    if A.shape != B.shape:
+        print("警告：矩阵 A 和矩阵 B 的形状不同，无法进行加减法。")
+    else:
+        # 矩阵加法
+        print("\n矩阵 A + B:")
+        print(A + B)
+
+        # 矩阵减法
+        print("\n矩阵 A - B:")
+        print(A - B)
+
+    # 矩阵乘法
+    if A.shape[1] == B.shape[0]:
+        print("\n矩阵 A * B:")
+        print(np.dot(A, B))
+    else:
+        print("\n无法进行矩阵 A 和 B 的乘法：A 的列数不等于 B 的行数。")
+
+    # 矩阵转置
+    print("\n矩阵 A 的转置:")
+    print(A.T)
+    print("\n矩阵 B 的转置:")
+    print(B.T)
+
+# 调用函数
+matrix_operations()
